@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LocalKart - Online Shopping</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #e6f2ff;
+    }
+
+    header {
+      background-color: #3399ff;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .search-bar input {
+      padding: 0.5rem;
+      width: 300px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .cart {
+      cursor: pointer;
+      background-color: #ffcc66;
+      color: #111;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .categories {
+      background-color: #cce6ff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .categories span {
+      margin: 0 10px;
+      background-color: #3399ff;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .main {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .product:hover {
+      transform: scale(1.02);
+    }
+
+    .product img {
+      width: 100%;
+      max-height: 180px;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+    }
+
+    .product h3 {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
+
+    .product p {
+      font-size: 1rem;
+      color: green;
+      margin: 0.5rem 0;
+    }
+
+    .product button {
+      background-color: #ffa41c;
+      border: none;
+      padding: 0.5rem 1rem;
+      color: white;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .product button:hover {
+      background-color: #ff8f00;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">LocalKart</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for products..." />
+    </div>
+    <div class="cart" onclick="viewCart()">🛒 Cart</div>
+  </header>
+
+  <div class="categories">
+    <span>Mobiles</span>
+    <span>Electronics</span>
+    <span>Fashion</span>
+    <span>Home</span>
+    <span>Appliances</span>
+    <span>Books</span>
+  </div>
+
+  <section class="main" id="product-list">
+    <!-- Product Cards -->
+  </section>
+
+  <script>
+    const products = [
+      {
+        name: "Smartphone - Galaxy M13",
+        price: "₹12,999",
+        img: "1.jpg"
+      },
+      {
+        name: "Wireless Earbuds",
+        price: "₹1,599",
+        img: "2.jpg"
+      },
+      {
+        name: "Laptop Backpack",
+        price: "₹849",
+        img: "3.jpg"
+      },
+      {
+        name: "Men's Casual Shoes",
+        price: "₹1,199",
+        img: "4.jpg"
+      },
+      {
+        name: "Wrist Watch",
+        price: "₹2,299",
+        img: "5.jpg"
+      },
+      {
+        name: "Bluetooth Speaker",
+        price: "₹999",
+        img: "6.jpg"
+      },
+      {
+        name: "Gaming Mouse",
+        price: "₹699",
+        img: "7.jpg"
+      },
+      {
+        name: "LED Monitor 24-inch",
+        price: "₹8,999",
+        img: "8.jpg"
+      },
+      {
+        name: "USB Keyboard",
+        price: "₹449",
+        img: "9.jpg"
+      },
+      {
+        name: "Smart LED Bulb",
+        price: "₹299",
+        img: "10.jpg"
+      }
+    ];
+
+    const productList = document.getElementById('product-list');
+
+    products.forEach((product) => {
+      const card = document.createElement('div');
+      card.className = 'product';
+      card.innerHTML = `
+        <img src="${product.img}" alt="${product.name}" />
+        <h3>${product.name}</h3>
+        <p>${product.price}</p>
+        <button onclick="addToCart('${product.name}')">Add to Cart</button>
+      `;
+      productList.appendChild(card);
+    });
+
+    function addToCart(productName) {
+      alert(productName + " added to cart!");
+    }
+
+    function viewCart() {
+      alert("Cart feature coming soon!");
+    }
+  </script>
+
+</body>
+</html>

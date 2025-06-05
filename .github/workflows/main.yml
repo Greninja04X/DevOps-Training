@@ -1,4 +1,4 @@
-name: Static WebPage 
+name: Deploy Static Website to S3
 
 on:
   push:
@@ -23,8 +23,4 @@ jobs:
       - name: Sync files to S3
         run: |
           aws s3 sync ./ s3://${{ secrets.S3_BUCKET_NAME }} --delete --acl public-read --exclude ".git/*" --exclude ".github/*"
-
-      - name: Invalidate CloudFront cache (optional)
-        if: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID != '' }}
-        run: |
-          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+          
